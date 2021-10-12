@@ -1,0 +1,16 @@
+.container {
+  width: 700px;
+  border-radius: 20px;
+  padding: 90px 0px;
+}
+.container:not(:last-child) {
+  margin-right: 40px;
+  box-shadow: 10px 10px 8px 2px var(--shadow-color);
+  text-align: center;
+}
+
+.title {
+  font-size: 50px;
+  color: var(--titel-color);
+  margin-bottom: 100px;
+}
