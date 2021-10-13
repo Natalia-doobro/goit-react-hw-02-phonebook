@@ -21,22 +21,12 @@ class App extends Component {
 
   addContact = (data) => {
     const { name, number } = data;
-    // const { contacts} = this.state;
 
     const contact = {
       id: shortid.generate(),
       name: name,
       number: number,
     };
-
-    //незнаю как правильно продумать логику
-
-    // contacts.filter(cont => cont.name !== data.name
-    //   ? this.setState(prevState => ({
-    //     contacts: [contact, ...prevState.contacts],
-    //   }))
-    //   : alert(`${name} is already in contacts`)
-    // )
 
     this.setState((prevState) => ({
       contacts: [contact, ...prevState.contacts],
@@ -62,13 +52,16 @@ class App extends Component {
   };
 
   render() {
-    const { filter } = this.state;
+    const { contacts, filter } = this.state;
     const listFilter = this.filterName();
 
     return (
       <div className={s.App}>
         <Section title="Phonebook">
-          <ContactForm onSubmit={this.addContact}></ContactForm>
+          <ContactForm
+            onSubmit={this.addContact}
+            masContact={contacts}
+          ></ContactForm>
         </Section>
 
         <Section title="Contacts">

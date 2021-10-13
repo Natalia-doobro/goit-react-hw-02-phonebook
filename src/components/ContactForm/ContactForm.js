@@ -25,9 +25,16 @@ class ContactForm extends Component {
   handleSubmit = (evt) => {
     evt.preventDefault();
 
-    this.props.onSubmit(this.state);
+    const accessName = this.props.masContact.find(
+      (el) => el.name === this.state.name
+    );
 
-    this.reset();
+    if (accessName) {
+      alert(`${this.state.name} is already in contacts`);
+    } else {
+      this.props.onSubmit(this.state);
+      this.reset();
+    }
   };
 
   reset = () => {
